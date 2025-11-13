@@ -1,6 +1,5 @@
 import requests
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -37,11 +36,10 @@ plt.title('Top 10 Causes of Death')
 plt.xlabel('Total Deaths')
 plt.ylabel('Cause')
 plt.show()
-#Option 2
+
 deaths_by_year = cdc.groupby('year')['deaths'].sum().reset_index()
 deaths_by_year.plot(x='year', y='deaths', kind='line', title='Total Deaths by Year')
 
-#option 3
 cdc['aadr'] = pd.to_numeric(cdc['aadr'], errors='coerce')
 cdc = cdc.dropna(subset=['aadr'])
 cdc = cdc[cdc['aadr'] > 0]
